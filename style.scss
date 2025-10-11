@@ -1,0 +1,103 @@
+html {
+  background-color: black;
+  color: white;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logo{
+        width: 20vw;
+        margin-bottom: 10px;
+    }
+    .breaking{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /*システム稼働状態*/
+        #status{
+        width: 70vw;
+        height: 40px;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        border-style: solid;
+        border-width: 3px;
+        border-radius: 10px;
+        border-color: gold;
+        background-color: #fff099;
+        /* border-color: green;
+        background-color: lightgreen;
+        */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        /*通知領域スタイル*/
+    .notification {
+        position: relative;
+        background: #222;
+        padding: 15px 50px 15px 20px; // 左に余裕を残す
+        border-radius: 8px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        width: 100%;
+        transform: translateY(0px);
+        animation: fadeSlideIn 0.4s forwards;
+        transition: opacity 0.3s ease, transform 0.3s ease; 
+
+        // 左線を疑似要素で作る
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 100%;
+            background-color: #0af;
+            border-radius: 8px 0 0 8px;
+        }
+
+        &.info::before {
+            background-color: #0af;
+        }
+        &.warn::before {
+            background-color: #f90;
+        }
+        &.error::before {
+            background-color: #f33;
+        }
+
+        .notification-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-left: 4px; // 左線との間隔
+            margin-bottom: 5px
+        }
+
+        .notification-text {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-left: 4px; // 左線との間隔
+        }
+    }
+    .notification.fade-out {
+            opacity: 0;
+            transform: translateY(15px); // 下に押し出されるイメージ
+            transition: opacity 0.3s, transform 0.3s;
+    }
+    @keyframes fadeSlideIn {
+        0% {
+        opacity: 0;
+        transform: translateY(-15px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+}
+}
