@@ -34,70 +34,198 @@ html {
         justify-content: center;
         align-items: center;
         }
+    }
 
-        /*通知領域スタイル*/
-    .notification {
-        position: relative;
+    #badge {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: red;
+        color: white;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        width: 20px;
+        height: 20px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        &.active { display: flex; }
+    }
+
+    // 設定ダイアログ
+    .settings-btn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background: #444;
+        color: white;
+        border: none;
+        font-size: 22px;
+        padding: 8px 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+
+        &:hover {
+            background: #666;
+        }
+    }
+
+    #settings-dialog {
+        position: fixed;
+        bottom: 130px;
+        right: 20px;
         background: #222;
-        padding: 15px 50px 15px 20px; // 左に余裕を残す
-        border-radius: 8px;
-        margin-bottom: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-        width: 100%;
-        transform: translateY(0px);
-        animation: fadeSlideIn 0.4s forwards;
-        transition: opacity 0.3s ease, transform 0.3s ease; 
+        border: 1px solid #555;
+        border-radius: 10px;
+        padding: 15px 20px;
+        color: white;
+        display: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 
-        // 左線を疑似要素で作る
-        &::before {
-            content: '';
+        &.show {
+            display: block;
+            animation: fadeIn 0.2s ease-in;
+        }
+    }
+    .notify-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #0af;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 22px;
+        width: 52px;
+        height: 52px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1100;
+        transition: transform .15s ease;
+
+        &:hover { transform: scale(1.06); }
+
+        .notify-badge, #badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 100%;
-            background-color: #0af;
-            border-radius: 8px 0 0 8px;
-        }
+            top: 6px;
+            right: 6px;
+            background: #ff2e2e;
+            color: #fff;
+            border-radius: 6px; // pill風。丸にしたければ 50%
+            font-size: 12px;
+            font-weight: 700;
+            min-width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            padding: 0 6px;
+            box-shadow: 0 0 6px rgba(0,0,0,0.25);
+            display: none;
 
-        &.info::before {
-            background-color: #0af;
-        }
-        &.warn::before {
-            background-color: #f90;
-        }
-        &.error::before {
-            background-color: #f33;
-        }
-
-        .notification-title {
-            font-weight: bold;
-            font-size: 14px;
-            margin-left: 4px; // 左線との間隔
-            margin-bottom: 5px
-        }
-
-        .notification-text {
-            font-size: 13px;
-            opacity: 0.9;
-            margin-left: 4px; // 左線との間隔
+            &.active { display: inline-flex; align-items: center; justify-content: center; }
         }
     }
-    .notification.fade-out {
-            opacity: 0;
-            transform: translateY(15px); // 下に押し出されるイメージ
-            transition: opacity 0.3s, transform 0.3s;
-    }
-    @keyframes fadeSlideIn {
-        0% {
+
+    /* 通知コンテナ（ボタンの上に出す） */
+    .notification-container {
+        position: fixed;
+        bottom: 90px; // ボタンの上
+        right: 20px;
+        width: 340px;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding: 10px;
+        background: rgba(22,22,22,0.98);
+        border-radius: 12px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+        z-index: 1090;
+        pointer-events: none;
         opacity: 0;
-        transform: translateY(-15px);
-        }
-        100% {
+        transform: translateY(12px);
+        transition: opacity .22s ease, transform .22s ease;
+
+        &.show {
+            pointer-events: auto;
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 各通知 */
+        .notification {
+            position: relative;
+            background: #222;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 12px 14px 12px 18px; // 左を広めにして疑似線と文字の余白
+            color: #fff;
+            overflow: hidden;
+
+            /* フェードアウト用トランジション（必須） */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity .45s ease, transform .45s ease;
+
+            /* 左色線（疑似要素） */
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 8px;
+                background: #0af;
+                border-radius: 6px 0 0 6px;
+            }
+
+        &.info::before  { background: #0af; }
+        &.warn::before  { background: #f6a600; }
+        &.error::before { background: #f33; }
+
+            /* フェードイン（新規出現） */
+        &.enter {
+            animation: fadeSlideIn .28s cubic-bezier(.2,.9,.2,1) both;
+        }
+
+        /* フェードアウト用クラス（JSで付与） */
+        &.fade-out {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+
+        .notification-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .notification-location {
+            font-size: 13px;
+            color: #cfd6dd;
+            margin-bottom: 6px;
+        }
+        .notification-detail {
+            font-size: 13px;
+            color: #aeb7bd;
+            line-height: 1.35;
+        }
+        }
+
+        @keyframes fadeSlideIn {
+            0% { opacity: 0; transform: translateY(-12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     }
 
-}
+        /* スクロールバー見た目（任意） */
+    .notification-container::-webkit-scrollbar { width: 10px; }
+    .notification-container::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.06);
+        border-radius: 6px;
+    }
+
 }
