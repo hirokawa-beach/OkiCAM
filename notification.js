@@ -1,8 +1,8 @@
 const btn = document.getElementById("notify-btn");
 const container = document.getElementById("notification-container");
 const badge = document.getElementById("badge");
-const notifySound = new Audio("sound/se_30125.wav");
-notifySound.volume = 0.4;
+//const notifySound = new Audio("sound/se_30125.wav");
+//notifySound.volume = 0.4;
 
 const MAX_SHOW = 3;
 let unreadCount = 0;
@@ -51,11 +51,11 @@ function addNotification({ title = "通知", location = "", detail = "", type = 
     unreadCount++;
     updateBadge();
 
-    const soundEnabled = localStorage.getItem("soundEnabled") !== "false";
-    if (soundEnabled) {
-      notifySound.currentTime = 0;
-      notifySound.play().catch(() => {});
-    }
+    //const soundEnabled = localStorage.getItem("soundEnabled") !== "false";
+    //if (soundEnabled) {
+      //notifySound.currentTime = 0;
+      //notifySound.play().catch(() => {});
+    //}
   }
 
 

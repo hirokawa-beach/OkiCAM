@@ -258,6 +258,7 @@ html {
                     display: flex;
 
                     .title{
+                        color: white;
                         font-weight: bold;
                         margin-left: 20px;
                         margin-bottom: 0;
@@ -344,6 +345,36 @@ html {
                         margin-top: 10px;
                     }
                 }
+                .diff3{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-basis: auto;
+                    padding: 0;
+                    .img{
+                        width: 90%;
+                    }
+                    .title{
+                        font-size: 1.1vw;
+                        margin-top: 10px;
+                    }
+                }
+                .diff4{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-basis: auto;
+                    padding: 0;
+                    .img{
+                        width: 90%;
+                    }
+                    .title{
+                        font-size: 1.1vw;
+                        margin-top: 10px;
+                    }
+                }
+                
+
             }
         }
         .qr1{
@@ -353,7 +384,7 @@ html {
             flex-direction: column;
             justify-content: flex-start;
             border-radius: 10px;
-            width: 90%;
+            width: 30%;
             margin-right: 10px;
             margin-bottom: 20px;
             font-size: 20px;
@@ -369,6 +400,7 @@ html {
                     display: flex;
 
                     .title{
+                        color: white;
                         font-weight: bold;
                         margin-left: 20px;
                         margin-bottom: 0;
@@ -408,14 +440,13 @@ html {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
-                justify-content: flex-start;
+                justify-content: center;
                 width: 100%;
-                gap: 0;
                 .now{
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    margin-left: 30px;
+                    margin-left: 50px;
                     margin: 0;
                     padding: 0;
                     .img{
@@ -431,22 +462,8 @@ html {
                     flex-direction: column;
                     align-items: center;
                     flex-basis: auto;
-                    width: auto;
                     padding: 0 !important;
-                    .img{
-                        width: 90%;
-                    }
-                    .title{
-                        font-size: 1.1vw;
-                        margin-top: 10px;
-                    }
-                }
-                .diff2{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    flex-basis: auto;
-                    padding: 0;
+                    margin-left: 10px;
                     .img{
                         width: 90%;
                     }
@@ -525,6 +542,7 @@ html {
                     display: flex;
 
                     .title{
+                        color: white;
                         font-weight: bold;
                         margin-left: 20px;
                         margin-bottom: 0;
@@ -605,6 +623,34 @@ html {
                     padding: 0;
                     .img{
                         width: 70%;
+                    }
+                    .title{
+                        font-size: 1.1vw;
+                        margin-top: 10px;
+                    }
+                }
+                .diff3{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-basis: auto;
+                    padding: 0;
+                    .img{
+                        width: 70%;
+                    }
+                    .title{
+                        font-size: 1.1vw;
+                        margin-top: 10px;
+                    }
+                }
+                .diff4{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-basis: auto;
+                    padding: 0;
+                    .img{
+                        width: 90%;
                     }
                     .title{
                         font-size: 1.1vw;
