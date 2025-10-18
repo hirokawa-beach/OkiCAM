@@ -89,6 +89,7 @@ function escapeHtml(s) {
 }
 
 // デモ用
+/*
 setInterval(() => {
   addNotification({
     title: `変化検知 #${counter++}`,
@@ -97,3 +98,4 @@ setInterval(() => {
     type: ["info","warn","error"][Math.floor(Math.random()*3)]
   });
 }, 4500);
+*/
