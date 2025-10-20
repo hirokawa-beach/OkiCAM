@@ -6,9 +6,12 @@
     <link rel="icon" href="img/okicamlogo_s.ico">
     <link rel="stylesheet" href="style.css">
     <script src="notification.js" defer></script>
-    <script src="settings.js" defer></script>
     <script src="update.js" defer></script>
+    <script src="settings.js" defer></script>
     <script src="imageopen.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
     <title>OkiCAM -HOME-</title>
 </head>
 <body>
@@ -22,10 +25,14 @@
         <!-- 設定 -->
         <div id="settings-btn" class="settings-btn">⚙️</div>
         <div id="settings-dialog">
-            <label>
+            <div class="toggle">
+            <input type="checkbox" id="update-toggle">
+            自動更新
+            </div>
+            <div class="toggle">
             <input type="checkbox" id="sound-toggle">
-            通知音を有効にする
-            </label>
+            <s>通知音を有効にする</s>
+            </div>
         </div>
 
         <!-- 通知 -->
@@ -97,7 +104,7 @@
                 <div class="top">
                     <div class="location">
                         <p class="title">鯖QRコード2</p>
-                        <p class="address">市町村不明</p>
+                        <p class="address">住所未設定</p>
                     </div>
                 <p id="rate">差分率: 0.0%</p>
                 </div>
@@ -106,7 +113,7 @@
                 <div class="top">
                     <div class="location">
                         <a class="title" href="https://wplace.live/?lat=20.054362913620015&lng=136.51989224677732&zoom=12.318108226909148">猫島</a>
-                        <p class="address">住所不明</p>
+                        <p class="address">住所未設定</p>
 
                     </div>
                     <div class="rate">
@@ -135,6 +142,42 @@
                         <img class="img" src="https://lh3.googleusercontent.com/d/1nH5z8nO4KoqrtkurIK5siTNgL6OW78rB">
                         <p class="title">差分画像(1日)</p>
                     </div>
+                </div>
+            </div>
+            <div class="minamitori">
+                <div class="top">
+                    <div class="location">
+                        <a class="title" href="https://wplace.live/?lat=24.28262093143656&lng=153.98709927802736&zoom=10.846089957117616">南鳥島</a>
+                        <p class="address">住所未設定</p>
+
+                    </div>
+                    <div class="rate">
+                        <p id="minrate">差分率(2分): 0.0%</p>
+                        <p id="hourrate">差分率(毎時): 0.0%</p>
+                    </div>
+                </div>
+                <div class="middle">
+                    <p>Coming Soon…</p>
+                    <!-- <div class="now">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/">
+                        <p class="title">直近画像</p>
+                    </div>
+                    <div class="diff1">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/">
+                        <p class="title">差分画像(1時間)</p>
+                    </div>
+                    <div class="diff2">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/">
+                        <p class="title">差分画像(6時間)</p>
+                    </div>
+                    <div class="diff3">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/">
+                        <p class="title">差分画像(12時間)</p>
+                    </div>
+                    <div class="diff4">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/">
+                        <p class="title">差分画像(1日)</p>
+                    </div> -->
                 </div>
             </div>
         </div>

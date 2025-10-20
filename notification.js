@@ -10,7 +10,8 @@ let counter = 1;
 
 // 設定（settings.js から読み込み）
 let userSettings = {
-  soundEnabled: true,
+  soundEnabled: false,
+  updateEnable: true,
 };
 if (window.loadUserSettings) userSettings = loadUserSettings();
 
