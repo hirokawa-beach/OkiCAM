@@ -1,0 +1,319 @@
+@charset "UTF-8";
+/* ================================
+   OkiCAM style.scss バランス型リファイン版
+   （忠実保持 + レイアウト最適化 + スマホ対応）
+   ================================ */
+html {
+  background-color: black;
+  color: white;
+  font-family: "M PLUS 1p", sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== メイン構成 ===== */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  /* ===== 共通UI ===== */
+  /* ===== 通知バッジ ===== */
+  /* ===== 設定パネル ===== */
+  /* ===== 通知リスト ===== */
+  /* ===== 概要パネル群 ===== */
+  /* ===== スマホ対応 ===== */
+  /* ===== スマホ対応 ===== */
+  /* ===== PCレイアウト ===== */
+}
+.main .logo {
+  width: 10vw;
+  min-width: 120px;
+  margin-bottom: 10px;
+}
+.main .breaking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .breaking #status {
+  width: 70vw;
+  height: 40px;
+  color: black;
+  font-size: clamp(14px, 2vw, 20px);
+  font-weight: bold;
+  border: 3px solid gold;
+  border-radius: 10px;
+  background-color: #fff099;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .settings-btn,
+.main .notify-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.main .settings-btn {
+  background: #444;
+  color: #fff;
+  font-size: 22px;
+  width: 48px;
+  height: 48px;
+  bottom: 80px;
+}
+.main .settings-btn:hover {
+  background: #666;
+}
+.main .notify-btn {
+  background: #0af;
+  color: #fff;
+  font-size: 22px;
+  width: 52px;
+  height: 52px;
+}
+.main .notify-btn:hover {
+  transform: scale(1.08);
+}
+.main .notify-badge,
+.main #badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #ff2e2e;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  display: none;
+}
+.main .notify-badge.active,
+.main #badge.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main #settings-dialog {
+  position: fixed;
+  bottom: 130px;
+  right: 20px;
+  background: #222;
+  border: 1px solid #555;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: white;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.main #settings-dialog.show {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease-in;
+}
+.main .notification-container {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 340px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 10px;
+  background: rgba(22, 22, 22, 0.98);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1090;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.main .notification-container.show {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+.main .overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 20px;
+  width: 95%;
+  margin-top: 10px;
+  justify-items: center;
+  /* 各ブロック共通設定 */
+}
+.main .overview > div {
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding-bottom: 5px;
+  transition: background 0.25s;
+}
+.main .overview > div:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.main .overview > div .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+}
+.main .overview > div .top .location {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.main .overview > div .top .location .title {
+  font-weight: bold;
+  color: white;
+  margin: 0 12px 0 0;
+  -webkit-text-decoration: underline 2px solid white;
+          text-decoration: underline 2px solid white;
+  text-underline-offset: 0.2em;
+  font-size: clamp(14px, 1.1vw, 20px);
+}
+.main .overview > div .top .location .address {
+  font-size: clamp(10px, 0.9vw, 14px);
+  background-color: rgb(57, 57, 57);
+  padding: 4px 6px;
+  border-radius: 8px;
+  color: whitesmoke;
+  margin-left: 4px;
+}
+.main .overview > div .top .rate {
+  display: flex;
+  gap: 8px;
+}
+.main .overview > div .top .rate #minrate, .main .overview > div .top .rate #hourrate {
+  font-size: clamp(12px, 1vw, 16px);
+}
+.main .overview > div .middle {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  padding-bottom: 8px;
+}
+.main .overview > div .middle .now, .main .overview > div .middle .diff1, .main .overview > div .middle .diff2, .main .overview > div .middle .diff3, .main .overview > div .middle .diff4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .overview > div .middle .now .img, .main .overview > div .middle .diff1 .img, .main .overview > div .middle .diff2 .img, .main .overview > div .middle .diff3 .img, .main .overview > div .middle .diff4 .img {
+  width: 90%;
+  max-width: 320px;
+  border-radius: 6px;
+}
+.main .overview > div .middle .now .title, .main .overview > div .middle .diff1 .title, .main .overview > div .middle .diff2 .title, .main .overview > div .middle .diff3 .title, .main .overview > div .middle .diff4 .title {
+  font-size: clamp(12px, 1.1vw, 16px);
+  margin-top: 6px;
+}
+@media (max-width: 768px) {
+  .main .overview {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+  .main .overview > div {
+    width: 94%;
+  }
+  .main .overview .middle .img {
+    width: 85% !important;
+  }
+  .main .overview .middle .title {
+    font-size: clamp(11px, 3.8vw, 15px);
+  }
+  .main .settings-btn, .main .notify-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    bottom: 16px;
+    right: 16px;
+  }
+  .main #settings-dialog {
+    right: 10px;
+    bottom: 80px;
+    width: calc(100% - 20px);
+  }
+  .main .notification-container {
+    right: 10px;
+    width: calc(100% - 20px);
+  }
+}
+@media (max-width: 480px) {
+  .main .logo {
+    width: 30vw;
+    min-width: 150px;
+  }
+  .main .breaking #status {
+    width: 90vw;
+  }
+  .main .overview > div {
+    font-size: clamp(12px, 4vw, 16px);
+    padding-bottom: 8px;
+  }
+  .main .overview .middle .img {
+    width: 80% !important;
+  }
+}
+@media (min-width: 1025px) {
+  .main {
+    /* 一行独占 */
+    /* 画像指定 */
+    /* 枠整列 */
+  }
+  .main .overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 12px;
+    width: 90%;
+    justify-content: center;
+    align-items: start;
+  }
+  .main .overview .mishima,
+  .main .overview .minamitori,
+  .main .overview .cat,
+  .main .overview .minami_event,
+  .main .overview .oki_event {
+    grid-column: 1/-1;
+    width: 100%;
+  }
+  .main .overview > div .middle {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .main .overview > div .middle .now, .main .overview > div .middle .diff1, .main .overview > div .middle .diff2, .main .overview > div .middle .diff3, .main .overview > div .middle .diff4 {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .main .overview > div .middle .now .img, .main .overview > div .middle .diff1 .img, .main .overview > div .middle .diff2 .img, .main .overview > div .middle .diff3 .img, .main .overview > div .middle .diff4 .img {
+    width: 90%;
+    height: auto;
+  }
+  .main .overview > div {
+    margin: 0;
+    width: 100%;
+  }
+}/*# sourceMappingURL=style2.css.map */
