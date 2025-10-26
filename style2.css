@@ -41,9 +41,9 @@ html {
   color: black;
   font-size: clamp(14px, 2vw, 20px);
   font-weight: bold;
-  border: 3px solid gold;
+  border: 3px solid #228b22;
   border-radius: 10px;
-  background-color: #fff099;
+  background-color: #3cb371;
   display: flex;
   justify-content: center;
   align-items: center;
