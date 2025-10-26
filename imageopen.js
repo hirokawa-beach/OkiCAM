@@ -45,6 +45,23 @@ document.querySelectorAll(".img").forEach(img => {
             -webkit-user-drag: none;
             transition: transform 0.1s ease-out;
           }
+          @media (max-width: 700px) {
+            #close-btn {
+              position: fixed;
+              top: 20px;
+              right: 25px;
+              background: rgba(255, 255, 255, 0.15);
+              color: white;
+              border: none;
+              border-radius: 50%;
+              width: 90px;
+              height: 90px;
+              font-size: 22px;
+              cursor: pointer;
+              backdrop-filter: blur(6px);
+              transition: background 0.2s ease;
+              z-index: 10;
+          }
         </style>
       </head>
       <body>
