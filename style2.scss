@@ -44,29 +44,38 @@ html {
   }
 
   /* ===== 共通UI ===== */
+  .location-btn,
   .settings-btn,
-.notify-btn {
-  position: fixed !important;
-  bottom: 20px;
-  right: 20px;
-  z-index: 99999;
-  background-color: rgba(40, 40, 40, 0.75);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  width: 58px;
-  height: 58px;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  .notify-btn {
+    position: fixed !important;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    background-color: rgba(40, 40, 40, 0.75);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 58px;
+    height: 58px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.2s ease, transform 0.15s ease;
   }
 
-
+  .location-btn {
+    background: #555;
+    color: #fff;
+    font-size: 22px;
+    width: 48px;
+    height: 48px;
+    bottom: 160px;
+    &:hover { background: #777; }
+  }
 
   .settings-btn {
     background: #444;
@@ -127,6 +136,137 @@ html {
       display: flex;
       flex-direction: column;
       animation: fadeIn 0.2s ease-in;
+    }
+  }
+
+  /* ===== ロケーションダイアログ ===== */
+  #location-dialog {
+    position: fixed;
+    bottom: 210px;
+    right: 20px;
+    background: #222;
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 15px 20px;
+    color: white;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    max-width: 280px;
+    max-height: 60vh;
+    overflow-y: auto;
+    z-index: 99998;
+
+    &.show {
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.2s ease-in;
+    }
+
+    h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    h4 {
+      margin: 12px 0 8px 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: #aaa;
+    }
+
+    /* タグフィルターセクション */
+    .tag-filter-section {
+      border-top: 1px solid #444;
+      padding-top: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tag-filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag-filter-btn {
+      background-color: rgba(0, 170, 255, 0.2);
+      color: #0af;
+      border: 1px solid #0af;
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+
+      &:hover {
+        background-color: rgba(0, 170, 255, 0.4);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+
+      &.active {
+        background-color: #0af;
+        color: #000;
+        font-weight: 600;
+        box-shadow: 0 0 12px rgba(0, 170, 255, 0.6);
+      }
+    }
+
+    /* 初期設定に戻すボタン */
+    .reset-layout-btn {
+      background-color: rgba(255, 100, 100, 0.2);
+      color: #ff6464;
+      border: 1px solid #ff6464;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      width: 100%;
+      margin-top: 12px;
+
+      &:hover {
+        background-color: rgba(255, 100, 100, 0.4);
+        transform: scale(1.02);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    .location-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .location-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: #0af;
+      }
+
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        accent-color: #0af;
+      }
+
+      span {
+        flex: 1;
+      }
     }
   }
 
@@ -247,6 +387,88 @@ html {
     }
   }
 
+  /* フィルタービュー内のアイテムスタイル（overviewと統一） */
+  .filter-view-items > div {
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding-bottom: 5px;
+    transition: background 0.25s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 8px 12px;
+
+      .location {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .title {
+          font-weight: bold;
+          color: white;
+          margin: 0 12px 0 0;
+          text-decoration: underline 2px solid white;
+          text-underline-offset: 0.2em;
+          font-size: clamp(14px, 1.1vw, 20px);
+        }
+
+        .address {
+          font-size: clamp(10px, 0.9vw, 14px);
+          background-color: rgb(57, 57, 57);
+          padding: 4px 6px;
+          border-radius: 8px;
+          color: whitesmoke;
+          margin-left: 4px;
+        }
+      }
+
+      .rate {
+        display: flex;
+        gap: 8px;
+        #minrate, #hourrate {
+          font-size: clamp(12px, 1vw, 16px);
+        }
+      }
+    }
+
+    .middle {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      width: 100%;
+      padding-bottom: 8px;
+
+      .now, .diff1, .diff2, .diff3, .diff4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .img {
+          width: 90%;
+          max-width: 320px;
+          border-radius: 6px;
+        }
+        .title {
+          font-size: clamp(12px, 1.1vw, 16px);
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+
   /* ===== スマホ対応 ===== */
   @media (max-width: 768px) {
     .overview {
@@ -290,6 +512,84 @@ html {
     }
   }
 
+  /* ===== フィルタービュー ===== */
+  &.filter-view {
+    .overview {
+      display: none;
+    }
+
+    .filter-view-container {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      margin-top: 10px;
+    }
+
+    .filter-view-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .filter-view-back-btn {
+      background-color: rgba(100, 100, 100, 0.8);
+      color: #fff;
+      border: 1px solid rgba(200, 200, 200, 0.5);
+      border-radius: 6px;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba(120, 120, 120, 0.9);
+      }
+    }
+
+    .filter-view-title {
+      font-size: 18px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .filter-view-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 20px;
+      width: 95%;
+      margin-top: 10px;
+      justify-items: center;
+
+      /* 各ブロック共通設定 */
+      > div {
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 10px;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: rgba(255, 255, 255, 0.03);
+        padding-bottom: 5px;
+        transition: background 0.25s;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.06);
+        }
+      }
+    }
+  }
+
   /* ===== PCレイアウト ===== */
 @media (min-width: 1025px) {
   .overview {
@@ -329,10 +629,78 @@ html {
     }
   }
 
+
+
   /* 枠整列 */
   .overview > div {
     margin: 0;
     width: 100%;
+  }
+
+  /* ===== レイアウト管理スタイル ===== */
+  .overview > [class] {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+
+    &.dragging {
+      opacity: 0.7;
+      transform: scale(0.98);
+      border: 2px dashed #0af;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  /* 操作UI */
+  .item-controls {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+  }
+
+  .drag-handle,
+  .toggle-visibility-btn {
+    background-color: rgba(100, 100, 100, 0.8);
+    color: #fff;
+    border: 1px solid rgba(200, 200, 200, 0.5);
+    border-radius: 6px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+
+    &:hover {
+      background-color: rgba(120, 120, 120, 0.9);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .drag-handle {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  .toggle-visibility-btn {
+    &:hover {
+      background-color: rgba(200, 100, 100, 0.9);
+    }
   }
 }
 }

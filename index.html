@@ -9,6 +9,7 @@
     <script src="update.js" defer></script>
     <script src="settings.js" defer></script>
     <script src="imageopen.js" defer></script>
+    <script src="layout.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -20,6 +21,55 @@
         <div class="breaking">
         <!-- 監視ステータス-->
             <p id="status">稼働中</p>
+        </div>
+
+        <!-- ロケーション（表示管理） -->
+        <div id="location-btn" class="location-btn">📍</div>
+        <div id="location-dialog" class="location-dialog">
+            <h3>監視対象の表示管理</h3>
+            
+            <!-- タグフィルター -->
+            <div class="tag-filter-section">
+                <h4>地域で絞り込み</h4>
+                <div id="tag-filter-list" class="tag-filter-list">
+                    <!-- JavaScriptで動的生成 -->
+                </div>
+            </div>
+
+            <!-- 表示/非表示チェックボックス -->
+            <div class="location-list">
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="mishima" checked>
+                    <span>島本体付近</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="qr1" checked>
+                    <span>鯖QRコード1</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="qr2" checked>
+                    <span>鯖QRコード2</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="cat" checked>
+                    <span>猫島</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="minamitori" checked>
+                    <span>南鳥島</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="minami_event" checked>
+                    <span>南鳥島イベント会場</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="oki_event" checked>
+                    <span>沖ノ鳥島イベント会場</span>
+                </label>
+            </div>
+
+            <!-- 初期設定に戻す -->
+            <button id="reset-layout-btn" class="reset-layout-btn">初期設定に戻す</button>
         </div>
 
         <!-- 設定 -->
@@ -44,16 +94,16 @@
         </div>
         <!-- 監視概要 -->
         <div class="overview">
-            <div class="mishima">
+            <div class="mishima" draggable="true" data-regions="沖ノ鳥市,三島区">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.422977243323956&lng=136.07375943427732&zoom=13.495251134769282">島本体付近</a>
+                        <a class="title" href="https://wplace.live/?lat=20.422977243323956&lng=136.07375943427732&zoom=13.495251134769282">島本体付近(1798-905-23-159)</a>
                         <p class="address">沖ノ鳥市</p>
                         <p class="address">三島区</p>
                     </div>
                     <div class="rate">
-                        <p id="minrate">差分率(): **%</p>
-                        <p id="hourrate">差分率(): **%</p>
+                        <p id="minrate"></p>
+                        <p id="hourrate"></p>
                     </div>
                 </div>
                 <div class="middle">
@@ -79,46 +129,46 @@
                     </div>
                 </div>
             </div>
-            <div class="qr1">
+            <div class="qr1" draggable="true" data-regions="鵜野市">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.324765682009613&lng=136.10926724677734&zoom=15">鯖QRコード1</a>
-                        <p class="address">鵜野市北部</p>
+                        <a class="title" href="https://wplace.live/?lat=20.324765682009613&lng=136.10926724677734&zoom=15">鯖QRコード1(1798-905-293-853)</a>
+                        <p class="address">鵜野市</p>
                     </div>
                     <div class="rate">
-                        <p id="minrate">差分率: **%</p>
+                        <p id="minrate"></p>
                     </div>
                 </div>
                 <div class="middle">
                     <div class="now">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1YS2fvpkzK083mgyHhDqGN1WEBX0KTdJu">
-                        <p class="title">直近画像</p>
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1gJ0toMGVxEG--b5X0Zd4WNGpBYEWRFhG">
+                        <p class="title">マーブル用画像</p>
                     </div>
                     <div class="diff1">
-                        <!-- <img class="img" src="https://lh3.googleusercontent.com/d/1321baLGd6IYwWEbuMrofj_F6uN_vKEpd"> -->
-                        <p class="title">差分画像(工事中)</p>
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1321baLGd6IYwWEbuMrofj_F6uN_vKEpd">
+                        <p class="title">差分画像</p>
                     </div>
                 </div>
             </div>
-            <div class="qr2">
+            <div class="qr2" draggable="true">
                 <div class="top">
                     <div class="location">
                         <p class="title">鯖QRコード2</p>
                         <p class="address">住所未設定</p>
                     </div>
-                <p id="rate">差分率: **%</p>
+                <p id="rate"></p>
                 </div>
             </div>
-            <div class="cat">
+            <div class="cat" draggable="true" data-regions="猫ヶ島村">
                 <div class="top">
                     <div class="location">
                         <a class="title" href="https://wplace.live/?lat=20.054362913620015&lng=136.51989224677732&zoom=12.318108226909148">猫島</a>
-                        <p class="address">住所未設定</p>
+                        <p class="address">猫ヶ島村</p>
 
                     </div>
                     <div class="rate">
-                        <p id="minrate">差分率(): **%</p>
-                        <p id="hourrate">差分率(): **%</p>
+                        <p id="minrate"></p>
+                        <p id="hourrate"></p>
                     </div>
                 </div>
                 <div class="middle">
@@ -144,20 +194,20 @@
                     </div>
                 </div>
             </div>
-            <div class="minamitori">
+            <div class="minamitori" draggable="true" data-regions="南鳥島">
                 <div class="top">
                     <div class="location">
                         <a class="title" href="https://wplace.live/?lat=24.28262093143656&lng=153.98709927802736&zoom=10.846089957117616">南鳥島</a>
-                        <p class="address">住所未設定</p>
+                        <p class="address">南鳥島</p>
 
                     </div>
                     <div class="rate">
-                        <p id="minrate">差分率(): **%</p>
-                        <p id="hourrate">差分率(): **%</p>
+                        <p id="minrate"></p>
+                        <p id="hourrate"></p>
                     </div>
                 </div>
                 <div class="middle">
-                    <p>Coming Soon…</p>
+                    <p>調整中</p>
                     <!-- <div class="now">
                         <img class="img" src="https://lh3.googleusercontent.com/d/">
                         <p class="title">直近画像</p>
@@ -180,16 +230,16 @@
                     </div> -->
                 </div>
             </div>
-            <div class="minami_event">
+            <div class="minami_event" draggable="true" data-regions="南鳥島">
                 <div class="top">
                     <div class="location">
                         <a class="title" href="https://wplace.live/?lat=24.481789739617952&lng=153.5153024030273&zoom=12.496084121907334">南鳥島イベント会場</a>
-                        <p class="address">住所未設定</p>
+                        <p class="address">南鳥島</p>
 
                     </div>
                     <div class="rate">
-                        <p id="minrate">差分率(): **%</p>
-                        <p id="hourrate">差分率(): **%</p>
+                        <p id="minrate"></p>
+                        <p id="hourrate"></p>
                     </div>
                 </div>
                 <div class="middle">
@@ -216,7 +266,7 @@
                     </div> -->
                 </div>
             </div>
-            <div class="oki_event">
+            <div class="oki_event" draggable="true">
                 <div class="top">
                     <div class="location">
                         <a class="title" href="https://wplace.live/?lat=20.76704456655323&lng=136.6244820905273&zoom=11.22510057253356">沖ノ鳥島イベント会場</a>
@@ -224,8 +274,8 @@
 
                     </div>
                     <div class="rate">
-                        <p id="minrate">差分率(): **%</p>
-                        <p id="hourrate">差分率(): **%</p>
+                        <p id="minrate"></p>
+                        <p id="hourrate"></p>
                     </div>
                 </div>
                 <div class="middle">
