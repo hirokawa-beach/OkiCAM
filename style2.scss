@@ -64,7 +64,9 @@ html {
     cursor: pointer;
     backdrop-filter: blur(6px);
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.2s ease, transform 0.15s ease;
+    transition:
+      background-color 0.2s ease,
+      transform 0.15s ease;
   }
 
   .location-btn {
@@ -74,7 +76,9 @@ html {
     width: 48px;
     height: 48px;
     bottom: 160px;
-    &:hover { background: #777; }
+    &:hover {
+      background: #777;
+    }
   }
 
   .settings-btn {
@@ -84,7 +88,9 @@ html {
     width: 48px;
     height: 48px;
     bottom: 80px;
-    &:hover { background: #666; }
+    &:hover {
+      background: #666;
+    }
   }
 
   .notify-btn {
@@ -93,7 +99,9 @@ html {
     font-size: 22px;
     width: 52px;
     height: 52px;
-    &:hover { transform: scale(1.08); }
+    &:hover {
+      transform: scale(1.08);
+    }
   }
 
   /* ===== 通知バッジ ===== */
@@ -197,7 +205,10 @@ html {
       padding: 4px 10px;
       font-size: 12px;
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+      transition:
+        background-color 0.2s ease,
+        transform 0.1s ease,
+        box-shadow 0.2s ease;
 
       &:hover {
         background-color: rgba(0, 170, 255, 0.4);
@@ -225,7 +236,9 @@ html {
       padding: 8px 12px;
       font-size: 13px;
       cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.1s ease;
+      transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
       width: 100%;
       margin-top: 12px;
 
@@ -286,7 +299,9 @@ html {
     pointer-events: none;
     opacity: 0;
     transform: translateY(12px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
 
     &.show {
       pointer-events: auto;
@@ -355,7 +370,8 @@ html {
         .rate {
           display: flex;
           gap: 8px;
-          #minrate, #hourrate {
+          #minrate,
+          #hourrate {
             font-size: clamp(12px, 1vw, 16px);
           }
         }
@@ -369,7 +385,11 @@ html {
         width: 100%;
         padding-bottom: 8px;
 
-        .now, .diff1, .diff2, .diff3, .diff4 {
+        .now,
+        .diff1,
+        .diff2,
+        .diff3,
+        .diff4 {
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -438,7 +458,8 @@ html {
       .rate {
         display: flex;
         gap: 8px;
-        #minrate, #hourrate {
+        #minrate,
+        #hourrate {
           font-size: clamp(12px, 1vw, 16px);
         }
       }
@@ -452,7 +473,11 @@ html {
       width: 100%;
       padding-bottom: 8px;
 
-      .now, .diff1, .diff2, .diff3, .diff4 {
+      .now,
+      .diff1,
+      .diff2,
+      .diff3,
+      .diff4 {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -488,12 +513,13 @@ html {
       }
     }
 
-    .settings-btn, .notify-btn {
-    bottom: 15px;
-    right: 15px;
-    width: 48px;
-    height: 48px;
-    font-size: 1.4rem;
+    .settings-btn,
+    .notify-btn {
+      bottom: 15px;
+      right: 15px;
+      width: 48px;
+      height: 48px;
+      font-size: 1.4rem;
     }
 
     .settings-btn {
@@ -589,58 +615,12 @@ html {
       }
     }
   }
-
-  /* ===== PCレイアウト ===== */
-@media (min-width: 1025px) {
-  .overview {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 12px;
-    width: 90%;
-    justify-content: center;
-    align-items: start;
-  }
-
-  /* 一行独占 */
-  .overview .mishima,
-  .overview .minamitori,
-  .overview .cat,
-  .overview .minami_event,
-  .overview .oki_event {
-    grid-column: 1 / -1;
-    width: 100%;
-  }
-
-  /* 画像指定 */
-  .overview > div .middle {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-
-    .now, .diff1, .diff2, .diff3, .diff4 {
-      flex: 1 1 auto;
-      min-width: 0;
-      .img {
-        width: 90%;
-        height: auto;
-      }
-    }
-  }
-
-
-
-  /* 枠整列 */
-  .overview > div {
-    margin: 0;
-    width: 100%;
-  }
-
-  /* ===== レイアウト管理スタイル ===== */
+  /* ===== レイアウト管理スタイル(全デバイス共通) ===== */
   .overview > [class] {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    position: relative;
+    position: relative; // 🔹重要: 相対位置指定
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
 
     &.dragging {
       opacity: 0.7;
@@ -677,7 +657,9 @@ html {
     justify-content: center;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition:
+      background-color 0.2s ease,
+      transform 0.1s ease;
 
     &:hover {
       background-color: rgba(120, 120, 120, 0.9);
@@ -702,5 +684,101 @@ html {
       background-color: rgba(200, 100, 100, 0.9);
     }
   }
-}
+
+  /* フィルタービュー内のアイテムも同様 */
+  .filter-view-items > div {
+    position: relative; // 🔹重要
+  }
+  /* ===== PCレイアウト ===== */
+  @media (min-width: 1025px) {
+    .overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 12px;
+      width: 90%;
+      justify-content: center;
+      align-items: start;
+    }
+
+    /* 一行独占 */
+    .overview .mishima,
+    .overview .minamitori,
+    .overview .cat,
+    .overview .minami_event,
+    .overview .oki_event {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    /* 画像指定 */
+    .overview > div .middle {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+
+      .now,
+      .diff1,
+      .diff2,
+      .diff3,
+      .diff4 {
+        flex: 1 1 auto;
+        min-width: 0;
+        .img {
+          width: 90%;
+          height: auto;
+        }
+      }
+    }
+
+    /* 枠整列 */
+    .overview > div {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .overview {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      width: 100%;
+      > div {
+        width: 94%;
+      }
+      .middle {
+        .img {
+          width: 85% !important;
+        }
+        .title {
+          font-size: clamp(11px, 3.8vw, 15px);
+        }
+      }
+    }
+
+    .settings-btn,
+    .notify-btn {
+      bottom: 15px;
+      right: 15px;
+      width: 48px;
+      height: 48px;
+      font-size: 1.4rem;
+    }
+
+    .settings-btn {
+      bottom: 75px;
+    }
+
+    #settings-dialog {
+      right: 80px;
+      bottom: 80px;
+      width: calc(100% - 150px);
+    }
+
+    .notification-container {
+      right: 40px;
+      width: calc(100% - 80px);
+    }
+  }
 }

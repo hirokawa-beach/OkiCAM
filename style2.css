@@ -25,6 +25,9 @@ html {
   /* フィルタービュー内のアイテムスタイル（overviewと統一） */
   /* ===== スマホ対応 ===== */
   /* ===== フィルタービュー ===== */
+  /* ===== レイアウト管理スタイル(全デバイス共通) ===== */
+  /* 操作UI */
+  /* フィルタービュー内のアイテムも同様 */
   /* ===== PCレイアウト ===== */
 }
 .main .logo {
@@ -335,7 +338,8 @@ html {
   display: flex;
   gap: 8px;
 }
-.main .overview > div .top .rate #minrate, .main .overview > div .top .rate #hourrate {
+.main .overview > div .top .rate #minrate,
+.main .overview > div .top .rate #hourrate {
   font-size: clamp(12px, 1vw, 16px);
 }
 .main .overview > div .middle {
@@ -346,17 +350,29 @@ html {
   width: 100%;
   padding-bottom: 8px;
 }
-.main .overview > div .middle .now, .main .overview > div .middle .diff1, .main .overview > div .middle .diff2, .main .overview > div .middle .diff3, .main .overview > div .middle .diff4 {
+.main .overview > div .middle .now,
+.main .overview > div .middle .diff1,
+.main .overview > div .middle .diff2,
+.main .overview > div .middle .diff3,
+.main .overview > div .middle .diff4 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.main .overview > div .middle .now .img, .main .overview > div .middle .diff1 .img, .main .overview > div .middle .diff2 .img, .main .overview > div .middle .diff3 .img, .main .overview > div .middle .diff4 .img {
+.main .overview > div .middle .now .img,
+.main .overview > div .middle .diff1 .img,
+.main .overview > div .middle .diff2 .img,
+.main .overview > div .middle .diff3 .img,
+.main .overview > div .middle .diff4 .img {
   width: 90%;
   max-width: 320px;
   border-radius: 6px;
 }
-.main .overview > div .middle .now .title, .main .overview > div .middle .diff1 .title, .main .overview > div .middle .diff2 .title, .main .overview > div .middle .diff3 .title, .main .overview > div .middle .diff4 .title {
+.main .overview > div .middle .now .title,
+.main .overview > div .middle .diff1 .title,
+.main .overview > div .middle .diff2 .title,
+.main .overview > div .middle .diff3 .title,
+.main .overview > div .middle .diff4 .title {
   font-size: clamp(12px, 1.1vw, 16px);
   margin-top: 6px;
 }
@@ -408,7 +424,8 @@ html {
   display: flex;
   gap: 8px;
 }
-.main .filter-view-items > div .top .rate #minrate, .main .filter-view-items > div .top .rate #hourrate {
+.main .filter-view-items > div .top .rate #minrate,
+.main .filter-view-items > div .top .rate #hourrate {
   font-size: clamp(12px, 1vw, 16px);
 }
 .main .filter-view-items > div .middle {
@@ -419,17 +436,29 @@ html {
   width: 100%;
   padding-bottom: 8px;
 }
-.main .filter-view-items > div .middle .now, .main .filter-view-items > div .middle .diff1, .main .filter-view-items > div .middle .diff2, .main .filter-view-items > div .middle .diff3, .main .filter-view-items > div .middle .diff4 {
+.main .filter-view-items > div .middle .now,
+.main .filter-view-items > div .middle .diff1,
+.main .filter-view-items > div .middle .diff2,
+.main .filter-view-items > div .middle .diff3,
+.main .filter-view-items > div .middle .diff4 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.main .filter-view-items > div .middle .now .img, .main .filter-view-items > div .middle .diff1 .img, .main .filter-view-items > div .middle .diff2 .img, .main .filter-view-items > div .middle .diff3 .img, .main .filter-view-items > div .middle .diff4 .img {
+.main .filter-view-items > div .middle .now .img,
+.main .filter-view-items > div .middle .diff1 .img,
+.main .filter-view-items > div .middle .diff2 .img,
+.main .filter-view-items > div .middle .diff3 .img,
+.main .filter-view-items > div .middle .diff4 .img {
   width: 90%;
   max-width: 320px;
   border-radius: 6px;
 }
-.main .filter-view-items > div .middle .now .title, .main .filter-view-items > div .middle .diff1 .title, .main .filter-view-items > div .middle .diff2 .title, .main .filter-view-items > div .middle .diff3 .title, .main .filter-view-items > div .middle .diff4 .title {
+.main .filter-view-items > div .middle .now .title,
+.main .filter-view-items > div .middle .diff1 .title,
+.main .filter-view-items > div .middle .diff2 .title,
+.main .filter-view-items > div .middle .diff3 .title,
+.main .filter-view-items > div .middle .diff4 .title {
   font-size: clamp(12px, 1.1vw, 16px);
   margin-top: 6px;
 }
@@ -448,7 +477,8 @@ html {
   .main .overview .middle .title {
     font-size: clamp(11px, 3.8vw, 15px);
   }
-  .main .settings-btn, .main .notify-btn {
+  .main .settings-btn,
+  .main .notify-btn {
     bottom: 15px;
     right: 15px;
     width: 48px;
@@ -534,13 +564,68 @@ html {
 .main.filter-view .filter-view-items > div:hover {
   background-color: rgba(255, 255, 255, 0.06);
 }
+.main .overview > [class] {
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.main .overview > [class].dragging {
+  opacity: 0.7;
+  transform: scale(0.98);
+  border: 2px dashed #0af;
+}
+.main .overview > [class].hidden {
+  display: none;
+}
+.main .item-controls {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+.main .drag-handle,
+.main .toggle-visibility-btn {
+  background-color: rgba(100, 100, 100, 0.8);
+  color: #fff;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.main .drag-handle:hover,
+.main .toggle-visibility-btn:hover {
+  background-color: rgba(120, 120, 120, 0.9);
+  transform: scale(1.05);
+}
+.main .drag-handle:active,
+.main .toggle-visibility-btn:active {
+  transform: scale(0.98);
+}
+.main .drag-handle {
+  cursor: grab;
+}
+.main .drag-handle:active {
+  cursor: grabbing;
+}
+.main .toggle-visibility-btn:hover {
+  background-color: rgba(200, 100, 100, 0.9);
+}
+.main .filter-view-items > div {
+  position: relative;
+}
 @media (min-width: 1025px) {
   .main {
     /* 一行独占 */
     /* 画像指定 */
     /* 枠整列 */
-    /* ===== レイアウト管理スタイル ===== */
-    /* 操作UI */
   }
   .main .overview {
     display: grid;
@@ -565,11 +650,19 @@ html {
     align-items: flex-start;
     gap: 10px;
   }
-  .main .overview > div .middle .now, .main .overview > div .middle .diff1, .main .overview > div .middle .diff2, .main .overview > div .middle .diff3, .main .overview > div .middle .diff4 {
+  .main .overview > div .middle .now,
+  .main .overview > div .middle .diff1,
+  .main .overview > div .middle .diff2,
+  .main .overview > div .middle .diff3,
+  .main .overview > div .middle .diff4 {
     flex: 1 1 auto;
     min-width: 0;
   }
-  .main .overview > div .middle .now .img, .main .overview > div .middle .diff1 .img, .main .overview > div .middle .diff2 .img, .main .overview > div .middle .diff3 .img, .main .overview > div .middle .diff4 .img {
+  .main .overview > div .middle .now .img,
+  .main .overview > div .middle .diff1 .img,
+  .main .overview > div .middle .diff2 .img,
+  .main .overview > div .middle .diff3 .img,
+  .main .overview > div .middle .diff4 .img {
     width: 90%;
     height: auto;
   }
@@ -577,58 +670,40 @@ html {
     margin: 0;
     width: 100%;
   }
-  .main .overview > [class] {
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    position: relative;
+}
+@media (max-width: 1024px) {
+  .main .overview {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
   }
-  .main .overview > [class].dragging {
-    opacity: 0.7;
-    transform: scale(0.98);
-    border: 2px dashed #0af;
+  .main .overview > div {
+    width: 94%;
   }
-  .main .overview > [class].hidden {
-    display: none;
+  .main .overview .middle .img {
+    width: 85% !important;
   }
-  .main .item-controls {
-    display: flex;
-    gap: 8px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 10;
+  .main .overview .middle .title {
+    font-size: clamp(11px, 3.8vw, 15px);
   }
-  .main .drag-handle,
-  .main .toggle-visibility-btn {
-    background-color: rgba(100, 100, 100, 0.8);
-    color: #fff;
-    border: 1px solid rgba(200, 200, 200, 0.5);
-    border-radius: 6px;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+  .main .settings-btn,
+  .main .notify-btn {
+    bottom: 15px;
+    right: 15px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
   }
-  .main .drag-handle:hover,
-  .main .toggle-visibility-btn:hover {
-    background-color: rgba(120, 120, 120, 0.9);
-    transform: scale(1.05);
+  .main .settings-btn {
+    bottom: 75px;
   }
-  .main .drag-handle:active,
-  .main .toggle-visibility-btn:active {
-    transform: scale(0.98);
+  .main #settings-dialog {
+    right: 80px;
+    bottom: 80px;
+    width: calc(100% - 150px);
   }
-  .main .drag-handle {
-    cursor: grab;
-  }
-  .main .drag-handle:active {
-    cursor: grabbing;
-  }
-  .main .toggle-visibility-btn:hover {
-    background-color: rgba(200, 100, 100, 0.9);
+  .main .notification-container {
+    right: 40px;
+    width: calc(100% - 80px);
   }
 }/*# sourceMappingURL=style2.css.map */
