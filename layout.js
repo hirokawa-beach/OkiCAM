@@ -1,7 +1,5 @@
 /**
  * OkiCAM Layout Manager
- * ドラッグ&ドロップで監視対象を並び替え、非表示にできる機能
- * スマホ対応: タッチ操作でのドラッグ&ドロップに対応
 **/
 
 class LayoutManager {

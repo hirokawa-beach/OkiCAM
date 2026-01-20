@@ -1,8 +1,4 @@
 @charset "UTF-8";
-/* ================================
-   OkiCAM style.scss バランス型リファイン版
-   （忠実保持 + レイアウト最適化 + スマホ対応）
-   ================================ */
 html {
   background-color: black;
   color: white;
