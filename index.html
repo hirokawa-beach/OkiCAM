@@ -49,6 +49,18 @@
                     <span>島本体付近</span>
                 </label>
                 <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="fukuzai" checked>
+                    <span>福材市</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="box1" checked>
+                    <span>Q*bert➀</span>
+                </label>
+                <label class="location-item">
+                    <input type="checkbox" class="location-toggle" data-target="cat" checked>
+                    <span>猫島</span>
+                </label>
+                <label class="location-item">
                     <input type="checkbox" class="location-toggle" data-target="qr1" checked>
                     <span>鯖QRコード1</span>
                 </label>
@@ -59,10 +71,6 @@
                 <label class="location-item">
                     <input type="checkbox" class="location-toggle" data-target="qr3" checked>
                     <span>鯖QRコード3</span>
-                </label>
-                <label class="location-item">
-                    <input type="checkbox" class="location-toggle" data-target="cat" checked>
-                    <span>猫島</span>
                 </label>
                 <label class="location-item">
                     <input type="checkbox" class="location-toggle" data-target="minamitori" checked>
@@ -107,7 +115,7 @@
             <div class="mishima" draggable="true" data-regions="沖ノ鳥市,三島区">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.422977243323956&lng=136.07375943427732&zoom=13.495251134769282">島本体付近(1798-905-23-159)</a>
+                        <a class="title" href="https://wplace.live/?lat=20.422977243323956&lng=136.07375943427732&zoom=13.495251134769282" target="_blank">島本体付近(1798-905-23-159)</a>
                         <p class="address">沖ノ鳥市</p>
                         <p class="address">三島区</p>
                     </div>
@@ -139,69 +147,80 @@
                     </div>
                 </div>
             </div>
-            <div class="qr1" draggable="true" data-regions="鵜野市">
+            <div class="fukuzai" draggable="true" data-regions="福材市">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.324765682009613&lng=136.10926724677734&zoom=15">鯖QRコード1(1798-905-293-853)</a>
-                        <p class="address">鵜野市</p>
+                        <a class="title" href="https://wplace.live/?lat=20.253869585441667&lng=135.70321255927735&zoom=11.834534893592453" target="_blank">福材市(1796-906-0-300)</a>
+                        <p class="address">福材市</p>
+
                     </div>
                     <div class="rate">
                         <p id="minrate"></p>
+                        <p id="hourrate"></p>
                     </div>
                 </div>
                 <div class="middle">
                     <div class="now">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1gJ0toMGVxEG--b5X0Zd4WNGpBYEWRFhG">
-                        <p class="title">マーブル用画像</p>
+                        <img class="img" src="https://lh3.googleusercontent.com/d/19UQLzgTHigRfFGUVwJTnslNKs7OF3-OS">
+                        <p class="title">直近画像</p>
                     </div>
                     <div class="diff1">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1321baLGd6IYwWEbuMrofj_F6uN_vKEpd">
-                        <p class="title">差分画像</p>
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1dZ9NxiAYB48y4L8uQblErDGaaAj8dXuu">
+                        <p class="title">差分画像(1時間)</p>
+                    </div>
+                    <div class="diff2">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1a5lsWTAc7RfQY0E-rIkplTD02zWI6xJI">
+                        <p class="title">差分画像(6時間)</p>
+                    </div>
+                    <div class="diff3">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1WveLOHilwx1cH-kCYIl5z0J9Ejld9kJG">
+                        <p class="title">差分画像(12時間)</p>
+                    </div>
+                    <div class="diff4">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/111idW37eRpxqSRwcYjXEKf4Ki-EjS9Uw">
+                        <p class="title">差分画像(1日)</p>
                     </div>
                 </div>
             </div>
-            <div class="qr2" draggable="true" data-regions="沖ノ鳥近海">
+            <div class="box1" draggable="true" data-regions="沖ノ鳥近海">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=19.988630123543132&lng=135.36782193427732&zoom=14.64456118547535">鯖QRコード2(1794-907-92-907)</a>
+                        <a class="title" href="https://wplace.live/?lat=20.976130473971903&lng=135.6135641217773&zoom=11.180054722484671" target="_blank">Q*bert➀(1795-901-490-910)</a>
                         <p class="address">沖ノ鳥近海</p>
+
                     </div>
-                <p id="rate"></p>
+                    <div class="rate">
+                        <p id="minrate"></p>
+                        <p id="hourrate"></p>
+                    </div>
                 </div>
                 <div class="middle">
                     <div class="now">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1GWipPZNczKkWvHDkC5Ly-_hu8-lWMMQn">
-                        <p class="title">マーブル用画像</p>
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1P9Jiqt7FcDilScZ7BGQ9cOqgNmYbBUzt">
+                        <p class="title">直近画像</p>
                     </div>
                     <div class="diff1">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1XPGXAgI54PgtNK2FG8CUSjunrjRBSdvg">
-                        <p class="title">差分画像</p>
+                        <img class="img" src="https://lh3.googleusercontent.com/d/109ZmPmHqlo5nuaNAk9bYX_NYskCvT2gO">
+                        <p class="title">差分画像(1時間)</p>
                     </div>
-                </div>
-            </div>
-            <div class="qr3" draggable="true" data-regions="沖ノ鳥近海">
-                <div class="top">
-                    <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.961357849325147&lng=136.51444302802736&zoom=12.828644930190935">鯖QRコード3(1800-902-615-0)</a>
-                        <p class="address">沖ノ鳥近海</p>
+                    <div class="diff2">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1sIlOK9V-iPqfrRrgkHjJoirmzBT_fr49">
+                        <p class="title">差分画像(6時間)</p>
                     </div>
-                <p id="rate"></p>
-                </div>
-                <div class="middle">
-                    <div class="now">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1f0s9eZPd38jczjlSCmynBrTrGRPD2t8L">
-                        <p class="title">マーブル用画像</p>
+                    <div class="diff3">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1-hSac7Mpc-KoP0-MFjbN-4RQhCFSfaik">
+                        <p class="title">差分画像(12時間)</p>
                     </div>
-                    <div class="diff1">
-                        <img class="img" src="https://lh3.googleusercontent.com/d/1m7oJRFI2S1meOs58PkBvNzkIdR-e1p-F">
-                        <p class="title">差分画像</p>
+                    <div class="diff4">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1SnZQj31sWzOLyEhWVgTT1LWN1LsTDC6H">
+                        <p class="title">差分画像(1日)</p>
                     </div>
                 </div>
             </div>
             <div class="cat" draggable="true" data-regions="猫ヶ島村">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.054362913620015&lng=136.51989224677732&zoom=12.318108226909148">猫島</a>
+                        <a class="title" href="https://wplace.live/?lat=20.054362913620015&lng=136.51989224677732&zoom=12.318108226909148" target="_blank">猫島</a>
                         <p class="address">猫ヶ島村</p>
 
                     </div>
@@ -233,10 +252,69 @@
                     </div>
                 </div>
             </div>
+            <div class="qr1" draggable="true" data-regions="鵜野市">
+                <div class="top">
+                    <div class="location">
+                        <a class="title" href="https://wplace.live/?lat=20.324765682009613&lng=136.10926724677734&zoom=15" target="_blank">鯖QRコード1(1798-905-293-853)</a>
+                        <p class="address">鵜野市</p>
+                    </div>
+                    <div class="rate">
+                        <p id="minrate"></p>
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="now">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1gJ0toMGVxEG--b5X0Zd4WNGpBYEWRFhG">
+                        <p class="title">マーブル用画像</p>
+                    </div>
+                    <div class="diff1">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1321baLGd6IYwWEbuMrofj_F6uN_vKEpd">
+                        <p class="title">差分画像</p>
+                    </div>
+                </div>
+            </div>
+            <div class="qr2" draggable="true" data-regions="沖ノ鳥近海">
+                <div class="top">
+                    <div class="location">
+                        <a class="title" href="https://wplace.live/?lat=19.988630123543132&lng=135.36782193427732&zoom=14.64456118547535" target="_blank">鯖QRコード2(1794-907-92-907)</a>
+                        <p class="address">沖ノ鳥近海</p>
+                    </div>
+                <p id="rate"></p>
+                </div>
+                <div class="middle">
+                    <div class="now">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1GWipPZNczKkWvHDkC5Ly-_hu8-lWMMQn">
+                        <p class="title">マーブル用画像</p>
+                    </div>
+                    <div class="diff1">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1XPGXAgI54PgtNK2FG8CUSjunrjRBSdvg">
+                        <p class="title">差分画像</p>
+                    </div>
+                </div>
+            </div>
+            <div class="qr3" draggable="true" data-regions="沖ノ鳥近海">
+                <div class="top">
+                    <div class="location">
+                        <a class="title" href="https://wplace.live/?lat=20.961357849325147&lng=136.51444302802736&zoom=12.828644930190935" target="_blank">鯖QRコード3(1800-902-615-0)</a>
+                        <p class="address">沖ノ鳥近海</p>
+                    </div>
+                <p id="rate"></p>
+                </div>
+                <div class="middle">
+                    <div class="now">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1f0s9eZPd38jczjlSCmynBrTrGRPD2t8L">
+                        <p class="title">マーブル用画像</p>
+                    </div>
+                    <div class="diff1">
+                        <img class="img" src="https://lh3.googleusercontent.com/d/1m7oJRFI2S1meOs58PkBvNzkIdR-e1p-F">
+                        <p class="title">差分画像</p>
+                    </div>
+                </div>
+            </div>
             <div class="minamitori" draggable="true" data-regions="南鳥島">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=24.28262093143656&lng=153.98709927802736&zoom=10.846089957117616">南鳥島</a>
+                        <a class="title" href="https://wplace.live/?lat=24.28262093143656&lng=153.98709927802736&zoom=10.846089957117616" target="_blank">南鳥島</a>
                         <p class="address">南鳥島</p>
 
                     </div>
@@ -272,7 +350,7 @@
             <div class="minami_event" draggable="true" data-regions="南鳥島">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=24.481789739617952&lng=153.5153024030273&zoom=12.496084121907334">南鳥島イベント会場</a>
+                        <a class="title" href="https://wplace.live/?lat=24.481789739617952&lng=153.5153024030273&zoom=12.496084121907334" target="_blank">南鳥島イベント会場</a>
                         <p class="address">南鳥島</p>
 
                     </div>
@@ -308,7 +386,7 @@
             <div class="oki_event" draggable="true">
                 <div class="top">
                     <div class="location">
-                        <a class="title" href="https://wplace.live/?lat=20.76704456655323&lng=136.6244820905273&zoom=11.22510057253356">沖ノ鳥島イベント会場</a>
+                        <a class="title" href="https://wplace.live/?lat=20.76704456655323&lng=136.6244820905273&zoom=11.22510057253356" target="_blank">沖ノ鳥島イベント会場</a>
                         <p class="address">住所未設定</p>
 
                     </div>
